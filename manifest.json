@@ -4,7 +4,7 @@
  "theme_color": "#0000ff",
  "background_color": "#add8e6",
  "display": "fullscreen",
- "start_url": "/Frozen-PWA/index.html",
+ "start_url": "Frozen-PWA/index.html",
  "icons": [
     {
         "src": "images/icons/icon-72x72.png",
