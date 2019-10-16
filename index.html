@@ -56,6 +56,56 @@
             
         }
          </script>
+    <script>  
+    var CACHE_NAME = 'static-v1';
+self.addEventListener('install', function (event) {
+event.waitUntil(
+caches.open(CACHE_NAME).then(function (cache) {
+return cache.addAll([
+'/',
+'/index.html',
+'/styles.css',
+'/app.js',
+'/manifest.js',
+'/vendor.js',
+]);
+})</script>
+    <script>
+    var CACHE_NAME = 'static-v1';
+ self.addEventListener('activate', function activator(event) {
+ event.waitUntil(caches.keys().then(function (keys) {
+ return Promise.all(keys.filter(function (key) {
+
+ return key.indexOf(CACHE_NAME) !== 0;}).map(function (key) {
+
+ return caches.delete(key);
+ })
+ );
+ })
+ );
+ });</script>
+    
+    <script>
+    self.addEventListener('fetch', function (event) {
+ event.respondWith(
+ caches.match(event.request).then(function (cachedResponse) {
+ return cachedResponse || fetch(event.request);
+ })
+ );
+ });
+    
+    caches.open(cacheName)
+        caches.open('example-cache').then(function(cache) {
+cache.add('/example-file.html');
+            caches.open('example-cache').then(function(cache) {
+ cache.matchAll('/images/').then(function(response) {
+ response.forEach(function(element, index, array) {
+ cache.delete(element);
+ });
+ });
+ })
+            cache.keys(request):
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
